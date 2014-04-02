@@ -1,5 +1,5 @@
 #!/usr/bin/php
-<?
+<?php
     function ft_check_day($day)
     {
         $days = array("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche");
