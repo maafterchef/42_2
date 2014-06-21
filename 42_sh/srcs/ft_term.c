@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_term.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bboumend <bboumend@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlingels <mlingels@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/05/14 18:12:53 by bboumend          #+#    #+#             */
-/*   Updated: 2014/06/21 16:11:37 by mlingels         ###   ########.fr       */
+/*   Created: 2014/06/21 15:21:35 by mlingels          #+#    #+#             */
+/*   Updated: 2014/06/21 16:06:23 by mlingels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_sh.h"
 
-int		main(void)
+void		ft_set_term(struct termios *term)
 {
-	ft_read();
-	return (0);
+	term->c_lflag &= ~(ICANON | ECHO);
+	term->c_cc[VMIN] = 1;
+	term->c_cc[VTIME] = 0;
+	tcsetattr(0, 0, term);
+}
+
+void		ft_unset_term(struct termios *term)
+{
+	term->c_lflag |= (ICANON | ECHO);
+	tcsetattr(0, 0, term);
 }

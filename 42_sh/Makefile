@@ -6,7 +6,7 @@
 #    By: bboumend <bboumend@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/18 16:09:20 by bboumend          #+#    #+#              #
-#    Updated: 2014/02/10 22:07:28 by bboumend         ###   ########.fr        #
+#    Updated: 2014/06/21 16:05:31 by mlingels         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,9 +31,12 @@ SRC			=		main.c				\
 					ft_cd.c				\
 					ft_cd2.c			\
 					ft_cd_ftab.c		\
+					ft_cursor.c			\
 					ft_echo.c			\
 					ft_env.c			\
 					ft_exit.c			\
+					ft_hist.c			\
+					ft_input.c			\
 					ft_pid.c			\
 					ft_prompt.c			\
 					ft_setenv.c			\
@@ -41,12 +44,13 @@ SRC			=		main.c				\
 					ft_builtin_error.c	\
 					ft_builtin.c		\
 					ft_pars_tools.c		\
+					ft_term.c			\
 					ft_tools.c			\
 					ft_exec_tools.c
 
 OBJ			=		$(SRC:.c=.o)
 
-FLAG_LINK	=		-L$(LIB_DIR) -lft
+FLAG_LINK	=		-L$(LIB_DIR) -lft -L /usr/lib -ltermcap
 
 FLAG_COMP	=		-Wall -Wextra -Werror -I$(INCLUDE_DIR)
 

@@ -6,12 +6,13 @@
 /*   By: bboumend <bboumend@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/14 18:11:30 by bboumend          #+#    #+#             */
-/*   Updated: 2014/06/19 00:27:27 by bboumend         ###   ########.fr       */
+/*   Updated: 2014/06/21 16:00:48 by mlingels         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SH_H
 # define FT_SH_H
+# include "ft_term.h"
 
 /*
 ** Includes
@@ -92,11 +93,20 @@ t_list				*ft_make_job(char *job);
 /*
 ** Env
 */
+
 typedef struct		s_env
 {
 	t_list			*env;
 	int				fd_save;
+	t_pos			*pos;
+	t_hist			*hist;
 }					t_env;
+
+typedef struct      s_func
+{
+    unsigned int    name;
+    void            (*ptr)(char **, t_env *, t_pos *, t_hist **);
+}                   t_func;
 
 t_list				*ft_get_env(void);
 char				**ft_tab_env(t_list *list);
@@ -144,7 +154,12 @@ void				ft_previous(t_env *e);
 void				ft_old(t_env *e);
 void				ft_home(t_env *e);
 void				ft_root(t_env *e);
-
+void				ft_get_input(char *c, char **buff, t_env *e);
+void	ft_left(char **buff, t_env *e, t_pos *pos, t_hist **hist);
+void    ft_right(char **buff, t_env *e, t_pos *pos, t_hist **hist);
+void    ft_up(char **buff, t_env *e, t_pos *pos, t_hist **hist);
+void    ft_down(char **buff, t_env *e, t_pos *pos, t_hist **hist);
+void    ft_del(char **buff, t_env *e, t_pos *pos, t_hist **hist);
 /*
 ** Error
 */
